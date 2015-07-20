@@ -11,3 +11,27 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+export VISUAL='emacsclient -c -a emacs'
+export EDITOR="$VISUAL"
+alias emc="$EDITOR"
+
+# Switches the mouse handedness using the command line rather than
+# going via system setting
+function mouse-switch() {
+    handedness=$1
+    shift
+    case $handedness in
+        left|l)
+            xmodmap -e 'pointer = 3 2 1'
+            return $?
+            ;;
+        right|r)
+            xmodmap -e 'pointer = 1 2 3'
+            return $?
+            ;;
+        *)
+            echo "Argument should be one of 'left, l, right, l'"
+            return 1
+            ;;
+    esac
+}
