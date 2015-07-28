@@ -11,7 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-export VISUAL='emacsclient -c -a emacs'
+export VISUAL='/opt/emacs/bin/emacsclient -c -a /opt/emacs/bin/emacs'
 export EDITOR="$VISUAL"
 alias emc="$EDITOR"
 
