@@ -15,6 +15,12 @@ export VISUAL='/opt/emacs/bin/emacsclient -c -a /opt/emacs/bin/emacs'
 export EDITOR="$VISUAL"
 alias emc="$EDITOR"
 
+# Add anaconda to the path if present
+ANACONDA_PATH="$HOME/miniconda3/bin"
+if [ -d $ANACONDA_PATH ]; then
+    export PATH="$ANACONDA_PATH:$PATH"
+fi
+
 # Switches the mouse handedness using the command line rather than
 # going via system setting
 function mouse-switch() {
