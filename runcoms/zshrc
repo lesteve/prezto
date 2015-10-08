@@ -14,6 +14,9 @@ fi
 export VISUAL='/opt/emacs/bin/emacsclient -c -a /opt/emacs/bin/emacs'
 export EDITOR="$VISUAL"
 alias emc="$EDITOR"
+# Aliases for switching conda environments
+alias ca='. activate'
+alias cda='. deactivate'
 
 # Add anaconda to the path if present
 ANACONDA_PATH="$HOME/miniconda3/bin"
