@@ -19,3 +19,16 @@ if [[ -n "$VIRTUAL_ENV" ]]; then
   zformat -f virtualenv_formatted "$virtualenv_format" "v:${VIRTUAL_ENV:t}"
   python_info[virtualenv]="$virtualenv_formatted"
 fi
+
+# Format conda env.
+if (( $+commands[conda] )); then
+  zstyle -s ':prezto:module:python:info:virtualenv' format 'virtualenv_format'
+
+  if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+    zformat -f virtualenv_formatted "$virtualenv_format" "v:${CONDA_DEFAULT_ENV:t}"
+  else
+    zformat -f virtualenv_formatted "$virtualenv_format" "v:root"
+  fi
+  python_info[virtualenv]="$virtualenv_formatted"
+fi
+
