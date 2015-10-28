@@ -133,7 +133,7 @@ prompt_my_agnoster_main() {
 
 prompt_my_agnoster_precmd() {
   vcs_info
-  PROMPT='%{%f%b%k%}$(prompt_my_agnoster_main) '
+  PROMPT=$'%{%f%b%k%}$(prompt_my_agnoster_main)\n%F{magenta}❯%f '
   if (( $+functions[python-info] )); then
     python-info
   fi
