@@ -11,9 +11,14 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-export VISUAL='/opt/emacs/bin/emacsclient -c -a /opt/emacs/bin/emacs'
+EMACS=emacs
+EMACSCLIENT="${EMACS}client"
+export VISUAL="$EMACSCLIENT -t"
 export EDITOR="$VISUAL"
-alias emc="$EDITOR"
+alias em="$EMACSCLIENT -c -a emacs"
+alias ec="$EMACSCLIENT -c"
+
+
 # Aliases for switching conda environments
 alias ca='. activate'
 alias cda='. deactivate'
