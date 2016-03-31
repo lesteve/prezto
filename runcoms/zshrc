@@ -15,7 +15,7 @@ EMACS=emacs
 EMACSCLIENT="${EMACS}client"
 export VISUAL="$EMACSCLIENT -t"
 export EDITOR="$VISUAL"
-alias em="$EMACSCLIENT -c -a emacs"
+alias em="$EMACSCLIENT -c -a $EMACS"
 alias ec="$EMACSCLIENT -c"
 
 
