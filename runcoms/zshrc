@@ -18,6 +18,10 @@ export EDITOR="$VISUAL"
 alias em="$EMACSCLIENT -c -a $EMACS"
 alias ec="$EMACSCLIENT -c"
 
+# Alias to have help for bash builtins
+function help() {
+    bash --norc -c "help $1"
+}
 
 # Aliases for switching conda environments
 alias ca='. activate'
