@@ -23,6 +23,9 @@ function help() {
     bash --norc -c "help $1"
 }
 
+# Alias to use IPython debugger with py.test
+alias pytestdb='pytest --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
+
 # Aliases for switching conda environments
 alias ca='. activate'
 alias cda='. deactivate'
