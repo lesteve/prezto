@@ -30,10 +30,16 @@ alias pytestdb='pytest --pdbcls=IPython.terminal.debugger:TerminalPdb --capture 
 alias ca='. activate'
 alias cda='. deactivate'
 
-# Add anaconda to the path if present
+# Prepending custom paths
+# join function from http://stackoverflow.com/a/17841619
+function join_by { local IFS="$1"; shift; echo "$*"; }
+
 ANACONDA_PATH="$HOME/miniconda3/bin"
-if [ -d $ANACONDA_PATH ]; then
-    export PATH="$ANACONDA_PATH:$PATH"
+CCACHE_PATH=/usr/lib/ccache
+PATHS_TO_PREPEND=$(join_by ':' $ANACONDA_PATH $CCACHE_PATH)
+
+if [ -n "$PATHS_TO_PREPEND" ]; then
+    export PATH="$PATHS_TO_PREPEND:$PATH"
 fi
 
 # Switches the mouse handedness using the command line rather than
