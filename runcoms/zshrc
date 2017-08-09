@@ -24,7 +24,7 @@ function help() {
 }
 
 # Alias to use IPython debugger with py.test
-alias pytestdb='pytest --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
+alias pytestdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
 
 # Aliases for switching conda environments
 alias ca='. activate'
