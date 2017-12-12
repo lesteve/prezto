@@ -36,7 +36,8 @@ function join_by { local IFS="$1"; shift; echo "$*"; }
 
 ANACONDA_PATH="$HOME/miniconda3/bin"
 CCACHE_PATH=/usr/lib/ccache
-PATHS_TO_PREPEND=$(join_by ':' $ANACONDA_PATH $CCACHE_PATH)
+MY_BIN_PATH="$HOME/bin"
+PATHS_TO_PREPEND=$(join_by ':' $ANACONDA_PATH $CCACHE_PATH $MY_BIN_PATH)
 
 if [ -n "$PATHS_TO_PREPEND" ]; then
     export PATH="$PATHS_TO_PREPEND:$PATH"
