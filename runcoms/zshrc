@@ -18,6 +18,12 @@ export EDITOR="$VISUAL"
 alias em="$EMACSCLIENT -c -a $EMACS"
 alias ec="$EMACSCLIENT -c"
 
+# Magically link PYTHONPATH to the ZSH array pythonpath
+typeset -T PYTHONPATH pythonpath
+# Remove duplicates
+typeset -U pythonpath path
+export PYTHONPATH pythonpath
+
 # Alias to have help for bash builtins
 function help() {
     bash --norc -c "help $1"
