@@ -49,6 +49,11 @@ if [ -n "$PATHS_TO_PREPEND" ]; then
     export PATH="$PATHS_TO_PREPEND:$PATH"
 fi
 
+# It seems like you need to activate the conda base environment to have
+# x86_64-conda_cos6-linux-gnu-cc et al. environment variables configured
+# correctly
+. activate
+
 # Switches the mouse handedness using the command line rather than
 # going via system setting
 function mouse-switch() {
