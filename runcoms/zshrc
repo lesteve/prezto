@@ -33,7 +33,7 @@ function help() {
 alias pytestdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
 
 # Aliases for switching conda environments
-alias ca='. activate'
+alias ca='cda && . activate'
 alias cda='. deactivate'
 
 # Prepending custom paths
