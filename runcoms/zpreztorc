@@ -41,14 +41,14 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt' \
+  'autosuggestions' \
   # 'python'
 
 #
 # Autosuggestions
 #
-
 # Set the query found color.
-# zstyle ':prezto:module:autosuggestions:color' found ''
+zstyle ':prezto:module:autosuggestions:color' found 'fg=22'
 
 #
 # Completions
