@@ -23,6 +23,8 @@ if [[ "$TERM" == "xterm" ]]; then
     export TERM="xterm-256color"
 fi
 
+# IPython debugger in pytest
+export PYTEST_ADDOPTS='--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
 # Magically link PYTHONPATH to the ZSH array pythonpath
 typeset -T PYTHONPATH pythonpath
 # Remove duplicates
@@ -33,9 +35,6 @@ export PYTHONPATH pythonpath
 function help() {
     bash --norc -c "help $1"
 }
-
-# Alias to use IPython debugger with py.test
-alias pytestdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
 
 # Aliases for switching conda environments
 alias ca='cda && . activate'
