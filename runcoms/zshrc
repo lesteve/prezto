@@ -24,7 +24,7 @@ if [[ "$TERM" == "xterm" ]]; then
 fi
 
 # IPython debugger in pytest
-export PYTEST_ADDOPTS='--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
+export PYTEST_ADDOPTS='--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb'
 # Magically link PYTHONPATH to the ZSH array pythonpath
 typeset -T PYTHONPATH pythonpath
 # Remove duplicates
