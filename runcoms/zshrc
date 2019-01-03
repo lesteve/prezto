@@ -37,26 +37,28 @@ function help() {
 }
 
 # Aliases for switching conda environments
-alias ca='cda && . activate'
-alias cda='. deactivate'
+alias ca='cda && conda activate'
+alias cda='conda deactivate'
 
 # Prepending custom paths
 # join function from http://stackoverflow.com/a/17841619
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
-ANACONDA_PATH="$HOME/miniconda3/bin"
 CCACHE_PATH=/usr/lib/ccache
 MY_BIN_PATH="$HOME/bin"
-PATHS_TO_PREPEND=$(join_by ':' $ANACONDA_PATH $CCACHE_PATH $MY_BIN_PATH)
+PATHS_TO_PREPEND=$(join_by ':' $CCACHE_PATH $MY_BIN_PATH)
 
 if [ -n "$PATHS_TO_PREPEND" ]; then
     export PATH="$PATHS_TO_PREPEND:$PATH"
 fi
 
-# It seems like you need to activate the conda base environment to have
-# x86_64-conda_cos6-linux-gnu-cc et al. environment variables configured
-# correctly
-. activate
+# Set-up conda through source profile.d/conda.sh + conda activate rather than
+# setting PATH. See
+# https://github.com/conda/conda/blob/master/CHANGELOG.md#440-2017-12-20 for
+# more details.
+ANACONDA_PATH="$HOME/miniconda3"
+source "$ANACONDA_PATH/etc/profile.d/conda.sh"
+conda activate
 
 # Switches the mouse handedness using the command line rather than
 # going via system setting
