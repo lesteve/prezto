@@ -52,14 +52,6 @@ if [ -n "$PATHS_TO_PREPEND" ]; then
     export PATH="$PATHS_TO_PREPEND:$PATH"
 fi
 
-# Set-up conda through source profile.d/conda.sh + conda activate rather than
-# setting PATH. See
-# https://github.com/conda/conda/blob/master/CHANGELOG.md#440-2017-12-20 for
-# more details.
-ANACONDA_PATH="$HOME/miniconda3"
-source "$ANACONDA_PATH/etc/profile.d/conda.sh"
-conda activate
-
 # Switches the mouse handedness using the command line rather than
 # going via system setting
 function mouse-switch() {
