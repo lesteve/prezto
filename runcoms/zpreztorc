@@ -138,6 +138,19 @@ zstyle ':prezto:module:prompt' theme 'pure'
 # Automatically initialize virtualenvwrapper if pre-requisites are met.
 # zstyle ':prezto:module:python:virtualenv' initialize 'yes'
 
+# zstyle ':prezto:module:python' skip-virtualenvwrapper-init 'on
+# 'zstyle ':prezto:module:python' conda-init 'on'
+
+# Set-up conda through source profile.d/conda.sh + conda activate rather than
+# setting PATH. See
+# https://github.com/conda/conda/blob/master/CHANGELOG.md#440-2017-12-20 for
+# more details.
+# For some reason, doing it here rather than zshrc does not mess up the prompt
+# (startup only one time thing, interaction with conda setting ps1 somewhere)
+MINICONDA_PATH="$HOME/miniconda3"
+source "$MINICONDA_PATH/etc/profile.d/conda.sh"
+conda activate
+
 #
 # Ruby
 #
