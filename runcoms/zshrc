@@ -72,3 +72,6 @@ function mouse-switch() {
             ;;
     esac
 }
+
+# Make * match files starting with .
+setopt globdots
