@@ -46,7 +46,10 @@ function join_by { local IFS="$1"; shift; echo "$*"; }
 
 CCACHE_PATH=/usr/lib/ccache
 MY_BIN_PATH="$HOME/bin"
-PATHS_TO_PREPEND=$(join_by ':' $CCACHE_PATH $MY_BIN_PATH)
+SHELL_TOOLS_ENV="$MINICONDA_PATH/envs/shell-tools"
+SHELL_TOOLS_PATH="$SHELL_TOOLS_ENV/bin"
+
+PATHS_TO_PREPEND=$(join_by ':' $CCACHE_PATH $MY_BIN_PATH $SHELL_TOOLS_PATH)
 
 if [ -n "$PATHS_TO_PREPEND" ]; then
     export PATH="$PATHS_TO_PREPEND:$PATH"
@@ -75,3 +78,18 @@ function mouse-switch() {
 
 # Make * match files starting with .
 setopt globdots
+
+# Set up fzf completions and shortcuts
+FZF_SHARE=$SHELL_TOOLS_ENV/share/fzf
+if [[ -d $FZF_SHARE ]]; then
+    source $FZF_SHARE/shell/completion.zsh
+    source $FZF_SHARE/shell/key-bindings.zsh
+fi
+
+# Easy way to have pass ** use fzf for password completion
+_fzf_complete_pass() {
+  ARGS="$@"
+  _fzf_complete '' "$@" < <(
+    command find ~/.password-store/ -name "*.gpg" | sed -r 's,(.*)\.password-store/(.*)\.gpg,\2,'
+  )
+}
