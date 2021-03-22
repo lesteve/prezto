@@ -46,13 +46,20 @@ function join_by { local IFS="$1"; shift; echo "$*"; }
 
 CCACHE_PATH=/usr/lib/ccache
 MY_BIN_PATH="$HOME/bin"
-SHELL_TOOLS_ENV="$MINICONDA_PATH/envs/shell-tools"
-SHELL_TOOLS_PATH="$SHELL_TOOLS_ENV/bin"
 
-PATHS_TO_PREPEND=$(join_by ':' $CCACHE_PATH $MY_BIN_PATH $SHELL_TOOLS_PATH)
+PATHS_TO_PREPEND=$(join_by ':' $CCACHE_PATH $MY_BIN_PATH)
 
 if [ -n "$PATHS_TO_PREPEND" ]; then
     export PATH="$PATHS_TO_PREPEND:$PATH"
+fi
+
+SHELL_TOOLS_ENV="$MINICONDA_PATH/envs/shell-tools"
+SHELL_TOOLS_PATH="$SHELL_TOOLS_ENV/bin"
+
+PATHS_TO_APPEND=$(join_by ':' $SHELL_TOOLS_PATH)
+
+if [ -n "$PATHS_TO_APPEND" ]; then
+    export PATH="$PATH:$PATHS_TO_APPEND"
 fi
 
 # Switches the mouse handedness using the command line rather than
