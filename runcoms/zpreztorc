@@ -37,6 +37,7 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'conda-zsh-completion' \
   'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
