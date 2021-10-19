@@ -106,3 +106,9 @@ _fzf_complete_pass() {
     command find ~/.password-store/ -name "*.gpg" | sed -r 's,(.*)\.password-store/(.*)\.gpg,\2,'
   )
 }
+
+# Need this to make sure module command available
+# on some HPC clusters
+if [[ -d $MODULESHOME ]]; then
+    source $MODULESHOME/init/zsh
+fi
