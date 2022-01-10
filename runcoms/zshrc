@@ -23,6 +23,11 @@ alias pytestdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --ca
 # alias for managing dotfiles
 alias dotfiles="git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
+# bat is called batcat on Ubuntu
+alias bat=batcat
+# Taken from https://remysharp.com/2018/08/23/cli-improved
+alias preview="fzf --preview 'batcat --color \"always\" {}'"
+
 # terminal 256 color support
 if [[ "$TERM" == "xterm" ]]; then
     export TERM="xterm-256color"
