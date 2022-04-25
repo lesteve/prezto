@@ -19,6 +19,9 @@ alias em="$EMACSCLIENT -c -a $EMACS"
 alias ec="$EMACSCLIENT -c"
 # IPython debugger in pytest
 alias pytestdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
+# Make sure pytest adds current directory to sys.path
+alias pytest='python -m pytest'
+alias _pytest='command pytest'
 
 # alias for managing dotfiles
 alias dotfiles="git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
