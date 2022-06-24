@@ -23,8 +23,12 @@ alias pytestdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --ca
 alias pytest='python -m pytest'
 alias _pytest='command pytest'
 
-# alias for managing dotfiles
-alias dotfiles="git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+# alias for managing dotfiles with stow
+DOTFILES_DIR=~/dev/dotfiles
+alias dotfiles-stow="stow --target ~ --dir $DOTFILES_DIR -S ."
+alias dotfiles-restow="dotfiles-stow -R"
+# useful to run dotfiles st from any folder
+alias dotfiles="git -C $DOTFILES_DIR"
 
 # bat is called batcat on Ubuntu
 alias bat=batcat
