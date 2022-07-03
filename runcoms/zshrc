@@ -128,3 +128,27 @@ _fzf_complete_pass() {
 if [[ -d $MODULESHOME ]]; then
     source $MODULESHOME/init/zsh
 fi
+
+# Useful functions to start/stop syncthing both locally and remotely
+function start_syncthing {
+  tmux new -s syncthing -d
+  tmux send-keys -t syncthing 'killall syncthing' C-m
+  tmux send-keys -t syncthing syncthing C-m
+  tmux split-window -h -t syncthing
+  # the echo is a hack. Not 100% sure but it seems like the password gets into
+  # the command when no password is asked. Without the echo the killall gets an
+  # error showing the help.
+  tmux send-keys -t syncthing \
+       'SSHPASS=$(pass work/inria/main | head -n1) \
+        sshpass -e ssh aiglon bash -c \
+            "echo > /dev/null; killall syncthing; $HOME/bin/syncthing --no-browser"' C-m
+}
+
+function stop_syncthing {
+  for i in 0 1; do
+    tmux select-pane -t $i
+    tmux send-keys -t syncthing C-c
+    tmux send-keys -t syncthing C-d
+  done
+  tmux kill-session -t syncthing
+}
