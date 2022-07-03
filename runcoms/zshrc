@@ -34,6 +34,10 @@ alias dotfiles="git -C $DOTFILES_DIR"
 alias bat=batcat
 # Taken from https://remysharp.com/2018/08/23/cli-improved
 alias preview="fzf --preview 'batcat --color \"always\" {}'"
+# alias to avoid typing password when sshing to aiglon. Somehow even if SSH
+# keys are set, it asks password (random guess: maybe a pam thing to renew the
+# kerberos ticket ...)
+alias aiglon='SSHPASS=$(pass work/inria/main | head -n1) sshpass -e ssh aiglon '
 
 # terminal 256 color support
 if [[ "$TERM" == "xterm" ]]; then
