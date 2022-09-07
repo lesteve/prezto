@@ -84,6 +84,10 @@ if [ -n "$PATHS_TO_APPEND" ]; then
     export PATH="$PATH:$PATHS_TO_APPEND"
 fi
 
+# using starship prompt. Note starship is in shell-tools conda env so can only
+# be set once the PATH is set
+eval "$(starship init zsh)"
+
 # Switches the mouse handedness using the command line rather than
 # going via system setting
 function mouse-switch() {
