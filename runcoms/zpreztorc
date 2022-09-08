@@ -123,7 +123,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Auto set to 'off' on dumb terminals.
 # Note: using the dump prompt here but the starship prompt is actually used and
 # setup later in ~/.zshrc
-zstyle ':prezto:module:prompt' theme 'off'
+zstyle ':prezto:module:prompt' theme 'starship'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)

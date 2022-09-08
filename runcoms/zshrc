@@ -84,10 +84,6 @@ if [ -n "$PATHS_TO_APPEND" ]; then
     export PATH="$PATH:$PATHS_TO_APPEND"
 fi
 
-# using starship prompt. Note starship is in shell-tools conda env so can only
-# be set once the PATH is set
-eval "$(starship init zsh)"
-
 # Switches the mouse handedness using the command line rather than
 # going via system setting
 function mouse-switch() {
@@ -111,6 +107,11 @@ function mouse-switch() {
 
 # Make * match files starting with .
 setopt globdots
+
+# prompt_subst is needed otherwise PS1 is not interpreted with starship prompt
+# e.g. looks like $(somme-command-that-returns-ps1). From
+# https://github.com/sorin-ionescu/prezto/issues/1887#issuecomment-1040761561
+setopt prompt_subst
 
 # Set up fzf completions and shortcuts
 FZF_SHARE=$SHELL_TOOLS_ENV/share/fzf
