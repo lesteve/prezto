@@ -146,7 +146,7 @@ function start_syncthing {
   tmux send-keys -t syncthing \
        'SSHPASS=$(pass work/inria/main | head -n1) \
         sshpass -e ssh aiglon bash -c \
-            "echo > /dev/null; killall syncthing; $HOME/bin/syncthing --no-browser"' C-m
+            "echo > /dev/null; killall syncthing; ~/bin/syncthing --no-browser"' C-m
 }
 
 function stop_syncthing {
