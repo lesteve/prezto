@@ -1,4 +1,5 @@
 # when starship module is loaded we have not executed .zshrc yet so starship is
 # not in the PATH
-STARSHIP_PATH=~/miniconda3/envs/shell-tools/bin/starship
-eval "$($STARSHIP_PATH init zsh)"
+# STARSHIP_PATH=~/miniconda3/envs/shell-tools/bin/starship
+eval "$(starship init zsh)"
+# eval "$($STARSHIP_PATH init zsh)"

@@ -75,11 +75,6 @@ if [ -n "$PATHS_TO_PREPEND" ]; then
     export PATH="$PATHS_TO_PREPEND:$PATH"
 fi
 
-SHELL_TOOLS_ENV="$MINICONDA_PATH/envs/shell-tools"
-SHELL_TOOLS_PATH="$SHELL_TOOLS_ENV/bin"
-
-PATHS_TO_APPEND=$(join_by ':' $SHELL_TOOLS_PATH)
-
 if [ -n "$PATHS_TO_APPEND" ]; then
     export PATH="$PATH:$PATHS_TO_APPEND"
 fi
@@ -114,10 +109,10 @@ setopt globdots
 setopt prompt_subst
 
 # Set up fzf completions and shortcuts
-FZF_SHARE=$SHELL_TOOLS_ENV/share/fzf
+FZF_SHARE=/usr/share/fzf
 if [[ -d $FZF_SHARE ]]; then
-    source $FZF_SHARE/shell/completion.zsh
-    source $FZF_SHARE/shell/key-bindings.zsh
+    source $FZF_SHARE/completion.zsh
+    source $FZF_SHARE/key-bindings.zsh
 fi
 
 # Easy way to have pass ** use fzf for password completion
