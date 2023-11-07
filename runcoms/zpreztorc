@@ -153,13 +153,18 @@ zstyle ':prezto:module:prompt' theme 'starship'
 # more details.
 # For some reason, doing it here rather than zshrc does not mess up the prompt
 # (startup only one time thing, interaction with conda setting ps1 somewhere)
-MINICONDA_PATH="$HOME/miniconda3"
+MINICONDA_PATH="$HOME/micromamba"
 MINICONDA_INIT_FILE="$MINICONDA_PATH/etc/profile.d/conda.sh"
 
 if [[ -f $MINICONDA_INIT_FILE ]]; then
     source $MINICONDA_INIT_FILE
     conda activate
 fi
+
+export MAMBA_EXE="/home/lesteve/.local/bin/micromamba";
+export MAMBA_ROOT_PREFIX="/home/lesteve/micromamba";
+__mamba_setup="$('/home/lesteve/.local/bin/micromamba' shell hook --shell zsh --prefix '/home/lesteve/micromamba' 2> /dev/null)"
+eval "$__mamba_setup"
 
 #
 # Ruby
