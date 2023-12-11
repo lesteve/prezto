@@ -30,10 +30,8 @@ alias dotfiles-restow="dotfiles-stow -R"
 # useful to run dotfiles st from any folder
 alias dotfiles="git -C $DOTFILES_DIR"
 
-# bat is called batcat on Ubuntu
-alias bat=batcat
 # Taken from https://remysharp.com/2018/08/23/cli-improved
-alias preview="fzf --preview 'batcat --color \"always\" {}'"
+alias preview="fzf --preview 'bat --color \"always\" {}'"
 # alias to avoid typing password when sshing to aiglon. Somehow even if SSH
 # keys are set, it asks password (random guess: maybe a pam thing to renew the
 # kerberos ticket ...)
