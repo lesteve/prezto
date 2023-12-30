@@ -64,7 +64,7 @@ alias cda='conda deactivate'
 # join function from http://stackoverflow.com/a/17841619
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
-CCACHE_PATH=/usr/lib/ccache
+CCACHE_PATH="/usr/lib/ccache/bin"
 MY_BIN_PATH="$HOME/bin"
 
 PATHS_TO_PREPEND=$(join_by ':' $CCACHE_PATH $MY_BIN_PATH)
