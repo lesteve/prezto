@@ -36,6 +36,8 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 # keys are set, it asks password (random guess: maybe a pam thing to renew the
 # kerberos ticket ...)
 alias aiglon='SSHPASS=$(pass work/inria/main | head -n1) sshpass -e ssh aiglon '
+# alias to avoid typing password for adastra
+alias adastra='SSHPASS=$(pass work/cines | head -n1) sshpass -e ssh adastra'
 
 # terminal 256 color support
 if [[ "$TERM" == "xterm" ]]; then
