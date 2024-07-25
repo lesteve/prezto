@@ -159,3 +159,6 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
 # init zoxide to jump quicker to used folders
 eval "$(zoxide init zsh)"
+
+# atuin for better C-r
+eval "$(atuin init zsh --disable-up-arrow)"
