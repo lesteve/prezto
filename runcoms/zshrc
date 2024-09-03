@@ -92,8 +92,9 @@ function join_by { local IFS="$1"; shift; echo "$*"; }
 
 CCACHE_PATH="/usr/lib/ccache/bin"
 MY_BIN_PATH="$HOME/bin"
-
-PATHS_TO_PREPEND=$(join_by ':' $CCACHE_PATH $MY_BIN_PATH)
+PIXI_PATH="$HOME/.pixi/bin"
+# export PATH=/home/lesteve/.pixi/bin:$PATH
+PATHS_TO_PREPEND=$(join_by ':' $CCACHE_PATH $MY_BIN_PATH $PIXI_PATH)
 
 if [ -n "$PATHS_TO_PREPEND" ]; then
     export PATH="$PATHS_TO_PREPEND:$PATH"
@@ -186,3 +187,6 @@ eval "$(zoxide init zsh)"
 
 # atuin for better C-r
 eval "$(atuin init zsh --disable-up-arrow)"
+
+# pixi completions
+eval "$(pixi completion --shell zsh)"
