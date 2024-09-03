@@ -10,6 +10,26 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Improve vi insert mode shortcut by adding a few emacs convenient shortcuts
+# bindkey -M emacs shows all the emacs shortcuts if needed
+bindkey -M viins '^p' history-substring-search-up
+bindkey -M viins '^n' history-substring-search-down
+bindkey -M viins "^[p" history-beginning-search-backward
+bindkey -M viins "^[n" history-beginning-search-forward
+bindkey -M viins "^k" kill-line
+bindkey -M viins "^u" kill-whole-line
+bindkey -M viins "^[." insert-last-word
+bindkey -M viins "^a" beginning-of-line
+bindkey -M viins "^d" delete-char
+bindkey -M viins "^h" backward-delete-char
+bindkey -M viins "^[d" kill-word
+bindkey -M viins "^[^?" backward-kill-word
+bindkey -M viins "^[f" forward-word
+bindkey -M viins "^[b" backward-word
+# probably don't use this too much for now
+# bindkey -M viins "^f" forward-char
+# bindkey -M viins "^b" backward-char
+
 # Customize to your needs...
 EMACS=emacs
 EMACSCLIENT=emacsclient
@@ -38,6 +58,10 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias aiglon='SSHPASS=$(pass work/inria/main | head -n1) sshpass -e ssh aiglon '
 # alias to avoid typing password for adastra
 alias adastra='SSHPASS=$(pass work/cines | head -n1) sshpass -e ssh adastra'
+
+# Make vim surround in terminal more similar to evil (although a bit different
+# for example sa" rather than s" to quote selection)
+ZVM_VI_SURROUND_BINDKEY='s-prefix'
 
 # terminal 256 color support
 if [[ "$TERM" == "xterm" ]]; then

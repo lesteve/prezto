@@ -39,6 +39,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'conda-zsh-completion' \
   'gh-completion' \
+  'zsh-vi-mode' \
   'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
@@ -65,7 +66,7 @@ zstyle ':prezto:module:autosuggestions:color' found 'fg=174'
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'emacs'
+zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
 # zstyle ':prezto:module:editor' dot-expansion 'yes'
