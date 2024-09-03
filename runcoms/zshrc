@@ -5,6 +5,15 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# This needs to be before prezto init because EDITOR is used by zsh-vi-mode to
+# set default value ...
+EMACS=emacs
+EMACSCLIENT=emacsclient
+export VISUAL="$EMACSCLIENT -t"
+export EDITOR="$VISUAL"
+alias em="$EMACSCLIENT -c -a $EMACS"
+alias ec="$EMACSCLIENT -c"
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -31,12 +40,6 @@ bindkey -M viins "^[b" backward-word
 # bindkey -M viins "^b" backward-char
 
 # Customize to your needs...
-EMACS=emacs
-EMACSCLIENT=emacsclient
-export VISUAL="$EMACSCLIENT -t"
-export EDITOR="$VISUAL"
-alias em="$EMACSCLIENT -c -a $EMACS"
-alias ec="$EMACSCLIENT -c"
 # IPython debugger in pytest
 alias pytestdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --capture no'
 # Make sure pytest adds current directory to sys.path
