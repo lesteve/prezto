@@ -6,13 +6,21 @@
 #
 
 # This needs to be before prezto init because EDITOR is used by zsh-vi-mode to
-# set default value ...
+# set default value of ZVM_VI_EDITOR and then I get nano as the editor with zsh-vi-mode ...
 EMACS=emacs
 EMACSCLIENT=emacsclient
 export VISUAL="$EMACSCLIENT -t"
 export EDITOR="$VISUAL"
 alias em="$EMACSCLIENT -c -a $EMACS"
 alias ec="$EMACSCLIENT -c"
+
+# Initialise zsh-vi-mode when the script is sourced rather than when the first
+# command line starts This avoids messing up shortcuts like C-r defined by
+# atuin, see:
+# https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#initialization-mode
+# I also put zsh-vi-mode last in zpreztorc plugins load to try that zsh-vi-mode
+# has the last word
+ZVM_INIT_MODE=sourcing
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -35,6 +43,7 @@ bindkey -M viins "^[d" kill-word
 bindkey -M viins "^[^?" backward-kill-word
 bindkey -M viins "^[f" forward-word
 bindkey -M viins "^[b" backward-word
+bindkey -M viins "^x^e" edit-command-line
 # probably don't use this too much for now
 # bindkey -M viins "^f" forward-char
 # bindkey -M viins "^b" backward-char

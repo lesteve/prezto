@@ -39,12 +39,12 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'conda-zsh-completion' \
   'gh-completion' \
-  'zsh-vi-mode' \
   'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt' \
   'autosuggestions' \
+  'zsh-vi-mode' \
   # 'python'
 
 #
