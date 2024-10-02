@@ -167,11 +167,6 @@ if [[ -f $MINICONDA_MAMBA_INIT_FILE ]]; then
     source $MINICONDA_MAMBA_INIT_FILE
 fi
 
-export MAMBA_EXE="/home/lesteve/.local/bin/micromamba";
-export MAMBA_ROOT_PREFIX="/home/lesteve/micromamba";
-__mamba_setup="$('/home/lesteve/.local/bin/micromamba' shell hook --shell zsh --prefix '/home/lesteve/micromamba' 2> /dev/null)"
-eval "$__mamba_setup"
-
 #
 # Ruby
 #
