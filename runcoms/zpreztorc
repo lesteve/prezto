@@ -156,10 +156,15 @@ zstyle ':prezto:module:prompt' theme 'starship'
 # (startup only one time thing, interaction with conda setting ps1 somewhere)
 MINICONDA_PATH="$HOME/micromamba"
 MINICONDA_INIT_FILE="$MINICONDA_PATH/etc/profile.d/conda.sh"
+MINICONDA_MAMBA_INIT_FILE=${MINICONDA_INIT_FILE/conda.sh/mamba.sh}
 
 if [[ -f $MINICONDA_INIT_FILE ]]; then
     source $MINICONDA_INIT_FILE
     conda activate
+fi
+
+if [[ -f $MINICONDA_MAMBA_INIT_FILE ]]; then
+    source $MINICONDA_MAMBA_INIT_FILE
 fi
 
 export MAMBA_EXE="/home/lesteve/.local/bin/micromamba";
