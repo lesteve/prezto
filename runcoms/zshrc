@@ -94,10 +94,6 @@ function help() {
     bash --norc -c "help $1"
 }
 
-# Aliases for switching conda environments
-alias ca='cda && conda activate'
-alias cda='conda deactivate'
-
 # Prepending custom paths
 # join function from http://stackoverflow.com/a/17841619
 function join_by { local IFS="$1"; shift; echo "$*"; }
@@ -202,3 +198,23 @@ eval "$(atuin init zsh --disable-up-arrow)"
 
 # pixi completions
 eval "$(pixi completion --shell zsh)"
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'micromamba shell init' !!
+export MAMBA_EXE='/home/lesteve/.local/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/home/lesteve/micromamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from micromamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+# micromamba aliases
+alias mm='micromamba'
+alias ma='micromamba deactivate && micromamba activate'
+alias mda='micromamba deactivate'
+# activate base environment
+micromamba activate

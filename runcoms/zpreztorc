@@ -37,7 +37,6 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
-  'conda-zsh-completion' \
   'gh-completion' \
   'completion' \
   'syntax-highlighting' \
@@ -147,25 +146,6 @@ zstyle ':prezto:module:prompt' theme 'starship'
 
 # zstyle ':prezto:module:python' skip-virtualenvwrapper-init 'on
 # 'zstyle ':prezto:module:python' conda-init 'on'
-
-# Set-up conda through source profile.d/conda.sh + conda activate rather than
-# setting PATH. See
-# https://github.com/conda/conda/blob/master/CHANGELOG.md#440-2017-12-20 for
-# more details.
-# For some reason, doing it here rather than zshrc does not mess up the prompt
-# (startup only one time thing, interaction with conda setting ps1 somewhere)
-MINICONDA_PATH="$HOME/micromamba"
-MINICONDA_INIT_FILE="$MINICONDA_PATH/etc/profile.d/conda.sh"
-MINICONDA_MAMBA_INIT_FILE=${MINICONDA_INIT_FILE/conda.sh/mamba.sh}
-
-if [[ -f $MINICONDA_INIT_FILE ]]; then
-    source $MINICONDA_INIT_FILE
-    conda activate
-fi
-
-if [[ -f $MINICONDA_MAMBA_INIT_FILE ]]; then
-    source $MINICONDA_MAMBA_INIT_FILE
-fi
 
 #
 # Ruby
