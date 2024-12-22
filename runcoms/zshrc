@@ -214,7 +214,10 @@ unset __mamba_setup
 
 # micromamba aliases
 alias mm='micromamba'
-alias ma='micromamba deactivate && micromamba activate'
+function ma() {
+  old_conda_env=$CONDA_DEFAULT_ENV
+  micromamba deactivate && micromamba activate $1 || micromamba activate $old_conda_env
+}
 alias mda='micromamba deactivate'
 # activate base environment
 micromamba activate
