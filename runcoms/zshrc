@@ -44,9 +44,11 @@ bindkey -M viins "^[^?" backward-kill-word
 bindkey -M viins "^[f" forward-word
 bindkey -M viins "^[b" backward-word
 bindkey -M viins "^x^e" edit-command-line
-# probably don't use this too much for now
-# bindkey -M viins "^f" forward-char
-# bindkey -M viins "^b" backward-char
+# For some reason typing ESC waits too long before entering into command mode.
+# In an ideal world this should be handled by ZVM_ESCAPE_KEYTIMEOUT but it
+# looks like it isn't? I don't use keychords too much so setting a smaller
+# general timeout seems fine (default is 0.4)
+export ZVM_KEYTIMEOUT=0.1
 
 # Customize to your needs...
 # IPython debugger in pytest
