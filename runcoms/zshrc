@@ -215,11 +215,19 @@ unset __mamba_setup
 # <<< mamba initialize <<<
 
 # micromamba aliases
-alias mm='micromamba'
+alias mamba='micromamba'
+alias _mamba='command mamba'
 function ma() {
   old_conda_env=$CONDA_DEFAULT_ENV
   micromamba deactivate && micromamba activate $1 || micromamba activate $old_conda_env
 }
+# Make ma tab completion work. Inspired from echo $__mamba_setup without a deep
+# understanding ... I did not manage to use compdef to tell ma to use the same
+# completions as micromamba activate. It works with a command but not with command + arg
+function _ma() {
+  COMPREPLY=($(__mamba_exe completer activate "${(@s: :)${(@s: :)COMP_LINE}:1}"))
+}
+complete -o default -F _ma ma
 alias mda='micromamba deactivate'
 # activate base environment
 micromamba activate
