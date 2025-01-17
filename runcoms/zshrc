@@ -231,3 +231,6 @@ complete -o default -F _ma ma
 alias mda='micromamba deactivate'
 # activate base environment
 micromamba activate
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/lesteve/.cache/lm-studio/bin"
