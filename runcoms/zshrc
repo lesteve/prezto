@@ -234,3 +234,8 @@ micromamba activate
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/lesteve/.cache/lm-studio/bin"
+
+. "$HOME/.local/bin/env"
+
+# Array API
+export SCIPY_ARRAY_API=1
