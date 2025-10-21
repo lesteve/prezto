@@ -239,3 +239,7 @@ export PATH="$PATH:/home/lesteve/.cache/lm-studio/bin"
 
 # Array API
 export SCIPY_ARRAY_API=1
+# Set PYTHON_GIL=0 because of pandas. This can be removed when
+# https://github.com/pandas-dev/pandas/pull/59248 is in a release, which is not
+# the case for pandas 2.3.3
+export PYTHON_GIL=0
